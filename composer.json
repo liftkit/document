@@ -1,0 +1,25 @@
+{
+	"name": "liftkit/document",
+	"description": "LiftKit adding elements to HTML documents",
+	"license": "LGP-2.1",
+	"authors": [
+		{
+			"name": "Ryan Williams",
+			"email": "rwilliams@stream9.net",
+			"homepage": "https://www.stream9.net",
+			"role": "Developer"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"LiftKit\\": "src/",
+			"LiftKit\\Tests\\Unit\\": "tests/unit/"
+		}
+	},
+	"require": {
+		"liftkit/output": "1.*"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "4.5.*"
+	}
+}
