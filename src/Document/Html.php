@@ -2,7 +2,7 @@
 
 
 	namespace LiftKit\Document;
-	
+
 	use LiftKit\Output\Html as HtmlOutput;
 
 
@@ -30,6 +30,18 @@
 
 
 		/**
+		 * @var array
+		 */
+		protected $scriptUrls = array();
+
+
+		/**
+		 * @var array
+		 */
+		protected $stylesheetUrls = array();
+
+
+		/**
 		 * addHeader function.
 		 *
 		 * @access public
@@ -47,7 +59,7 @@
 			}
 		}
 
-		
+
 		/**
 		 * prependHeader function.
 		 *
@@ -106,6 +118,12 @@
 		 */
 		public function addScript ($src, $prepend = false)
 		{
+			if ($prepend) {
+				array_unshift($this->scriptUrls, $src);
+			} else {
+				$this->scriptUrls[] = $src;
+			}
+
 			$html = '<script type="text/javascript" src="' . $this->sanitize($src) . '"></script>';
 
 			$this->addHeader($html, $prepend);
@@ -126,6 +144,12 @@
 		 */
 		public function addStylesheet ($src, $prepend = false)
 		{
+			if ($prepend) {
+				array_unshift($this->stylesheetUrls, $src);
+			} else {
+				$this->stylesheetUrls[] = $src;
+			}
+
 			$html = '<link rel="stylesheet" type="text/css" href="' . $this->sanitize($src) . '" />';
 
 			$this->addHeader($html, $prepend);
@@ -234,8 +258,26 @@
 		{
 			return implode(PHP_EOL, $this->appendBody);
 		}
-		
-		
+
+
+		/**
+		 * @return array
+		 */
+		public function getScriptUrls ()
+		{
+			return $this->scriptUrls;
+		}
+
+
+		/**
+		 * @return array
+		 */
+		public function getStylesheetUrls ()
+		{
+			return $this->stylesheetUrls;
+		}
+
+
 		/**
 		 * Sanitizes HTML output
 		 *
