@@ -17,9 +17,9 @@
 		}
 	},
 	"require": {
-		"liftkit/output": "1.*"
+		"liftkit/output": "~1.0"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "4.5.*"
+		"phpunit/phpunit": "^4.5"
 	}
 }
